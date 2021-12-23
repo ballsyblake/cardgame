@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head lang="en" xml:lang="en">
+        <title>NCF</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86"/>
+        <title>NCF Appointments</title>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/game.js"></script>
+    </head>
+    <style>
+        @import url(//fonts.googleapis.com/css?family=Roboto);
+        body {
+            background: #001628;
+            color: #777;
+            padding: 2em;
+            font-family: sans-serif;
+            line-height: 1.15;
+        }
+        .page {
+            padding: 1em;
+            background: radial-gradient(#cecece, white);
+            max-width: 1800px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(225px,1fr));
+            grid-gap: 1em;
+            
+        }
+        
+        .player {
+            background: 
+                /* On "top" */
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    #E3CE75 10px,
+                    #E3CE75 20px
+                ),
+                /* on "bottom" */
+                linear-gradient(
+                    to bottom,
+                    #FCFEB4,
+                    #FBE898
+            );
+            border: 5px solid  #E3CE75;
+        }
+        .referee {
+            background: 
+                /* On "top" */
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgb(119, 118, 118) 10px,
+                    rgb(119, 118, 118) 20px
+                ),
+                /* on "bottom" */
+                linear-gradient(
+                    to bottom,
+                    rgb(136, 136, 136),
+                    rgb(136, 136, 136)
+            );
+            border: 5px solid  rgb(119, 118, 118);
+        }
+        .committee {
+            background: radial-gradient(white, white);
+            background: 
+                /* On "top" */
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    #b69efe 10px,
+                    #b69efe 20px
+                ),
+                /* on "bottom" */
+                linear-gradient(
+                    to bottom,
+                    #9d7dfc,
+                    #9b8cc9
+            );
+            border: 5px solid  #b69efe;
+        }
+        .grid-item {
+            height: 350px;
+            padding: 0.5em;
+            box-shadow:
+                0 5px 10px rgba(0, 0, 0, 0.1),
+                0 20px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 25px;
+            transition: transform .2s; 
+            color: black;
+            font-family: 'Roboto', sans-serif;
+            
+            background-clip: padding-box;
+            background-color: white;
+        }
+        
+        .grid-item h2 {
+            text-align: center;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-block-start: 0.3em;
+            margin-block-end: 0.3em;  
+            white-space: nowrap; 
+        }
+        .grid-item .smlImgs {
+            width: 90%;     
+            margin-left: 5%;       
+        }
+        .grid-item .smlImgs img {
+            width: auto;
+            display: inline-block;
+            height: 45px;
+            margin-left: 15%;
+            background-color: black;
+            background-color: transparent;
+        }
+
+        .grid-item .lrgImg {
+            width: auto;
+            height: 140px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: transparent;
+            padding-bottom: 10px;
+            
+        }
+        .grid-item h3 {
+            width: 30%;
+            display: inline-block;
+            text-align: center;
+            font-size: 14px;
+            margin-block-start: 0.4em;
+            margin-block-end: 0.4em;  
+            white-space: nowrap; 
+        }
+        
+    </style>
+    <body>
+        <div class="page">
+            <div class="grid-item player">
+                <h2>Blake Baldwin</h2>
+                <img class="lrgImg" src="img/Blake-Baldwin.jpg">
+                <div class="smlImgs">
+                    <img src="img/gold star.png">
+                    <img src="img/ncf_logo_correct.png">
+                </div>
+                <h2>99</h2>
+                <h3>99 SPE</h3>
+                <h3>99 POS</h3>
+                <h3>99 COM</h3>
+                <h3>99 STA</h3>
+                <h3>99 D-M</h3>
+                <h3>99 WHI</h3>
+            </div>
+        </div>
+    </body>
+</html>
