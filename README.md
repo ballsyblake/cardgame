@@ -1,17 +1,29 @@
-# FutsalMe card game
+# FutsalMe
 
-PHP + MySQL futsal card game (packs, collections, formations). Runs on a local XAMPP install.
+A futsal card game that runs entirely in the browser. Open packs, build a
+five-a-side team, pick a referee and play simulated matches for coins.
 
-## Setup
+- No server, database or login. Progress is saved on the device (`localStorage`).
+- No build step: three files, `index.html`, `app.css`, `app.js`.
+- All players, referees and clubs are made up.
 
-1. Put this folder in `htdocs` as `CardGame` and import the `ncf` database.
-2. Copy `config.example.php` to `config.local.php` and set your database login.
-   `config.local.php` is gitignored, so passwords never get committed.
+## Run it
 
-## Email (optional)
+Open `index.html` in a browser, or serve the folder:
 
-Email is off by default: new accounts are confirmed straight away.
+```sh
+python -m http.server 8000   # then open http://localhost:8000
+```
 
-To turn on confirmation emails, set `SMTP_USERNAME`, `SMTP_PASSWORD` (for Gmail,
-an [app password](https://myaccount.google.com/apppasswords)) and `PHPMAILER_PATH`
-in `config.local.php`.
+Pushing to `main` publishes it to GitHub Pages (`.github/workflows/pages.yml`).
+Pages must be switched on once: Settings > Pages > Source: GitHub Actions.
+
+## Tuning the game
+
+The rules are constants at the top of `app.js`: pack prices and odds, match
+length, coin rewards and how likely each match event is.
+
+## Old version
+
+`legacy/` holds the original PHP + MySQL version (needs XAMPP). It is kept for
+reference and is not published.

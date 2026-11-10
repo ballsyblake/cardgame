@@ -1,71 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head lang="en" xml:lang="en">
-        <title>NCF</title>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86"/>
-        <title>NCF Appointments</title>
-        <link rel="stylesheet" type="text/css" href="css/game.css">
-        <link rel="stylesheet" type="text/css" href="css/hover.css">
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/game.js"></script>
-    </head>
-    <body>
-        <img src="img/futsalme.png" alt="logo" id="logo">
-        <h1 id="welcome">Welcome </h1>
-        <div id="welcomeBtns">
-            <button id="register" class="hvr-grow-shadow">Register</button>
-            <button id="login" class="hvr-grow-shadow">Login</button>
-        </div>
-        <div id="modal1" class="modal">
-            <span class="close" title="Close Modal">&times;</span>
-            <form class="modal-content" action="/CardGame/register.php" method="post">
-                <div class="container">
-                    <h1>Sign Up</h1>
-                    <p>Please fill in this form to create an account.</p>
-                    <hr>
-                    <label for="email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" required>
-            
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" required>
-            
-                    <label for="psw-repeat"><b>Repeat Password</b></label>
-                    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-                    
-                    <label>
-                        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                    </label>
-                    <div class="clearfix">
-                        <button type="button" class="cancelbtn">Cancel</button>
-                        <button type="submit" class="signupbtn">Sign Up</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div id="modal2" class="modal">
-            <span class="close" title="Close Modal">&times;</span>
-            <form class="modal-content" action="/CardGame/login.php" method="post">
-                <div class="container">
-                    <h1>Login</h1>
-                    <p>Please fill in your details below.</p>
-                    <hr>
-                    <label for="email"><b>Email</b></label>
-                    <input type="text" placeholder="Enter Email" name="email" required>
-            
-                    <label for="password"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="password" required>
-            
-                    <label>
-                        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-                    </label>
-                    <div class="clearfix">
-                        <button type="button" class="cancelbtn">Cancel</button>
-                        <button type="submit" class="signupbtn">Login</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#001628">
+  <title>FutsalMe</title>
+  <meta name="description" content="FutsalMe: open packs, build a five-a-side team and play matches.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23001628'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%2300ADEF' stroke-width='6'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="top">
+    <button class="brand" data-go="home" aria-label="Home">FUTSAL<span>ME</span></button>
+    <div class="coins" id="coins" title="Coins"></div>
+  </header>
+  <main id="view"></main>
+  <nav class="tabs" id="tabs">
+    <button data-go="home">Home</button>
+    <button data-go="team">Team</button>
+    <button data-go="cards">Cards</button>
+    <button data-go="packs">Packs</button>
+    <button data-go="play">Play</button>
+  </nav>
+  <div id="overlay" hidden></div>
+  <script src="app.js"></script>
+</body>
 </html>
