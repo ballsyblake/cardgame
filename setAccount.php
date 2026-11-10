@@ -2,21 +2,25 @@
     // File references
     include 'pdo.php';
 
-    $appPage = "http://localhost/CardGame/mainMenu.html";
+    require_once('config.php');
+    $appPage = APP_URL . "/mainMenu.html";
     
     $id = $_POST["id"];
     $email = $_POST["email"];
     $name = $_POST["name"];
     $dob = $_POST["dob"];
-    $password = $_POST["password"];
-    if($password != "memesbaby" && !$password)
-        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-    
-    /* Insert query template. */
-    $query = 'UPDATE cardGameUsers SET email = :email, name = :name, dob = :dob, passwordHash = :passwordHash WHERE email = :id';
-    
+    $password = $_POST["password"] ?? "";
+
     /* Values array for PDO. */
-    $values = [':id' => $id,':email' => $email,':name' => $name,':dob' => $dob,':passwordHash' => $passwordHash];
+    $values = [':id' => $id,':email' => $email,':name' => $name,':dob' => $dob];
+
+    /* Only change the password when a new one was typed in. */
+    if ($password !== "") {
+        $query = 'UPDATE cardGameUsers SET email = :email, name = :name, dob = :dob, passwordHash = :passwordHash WHERE email = :id';
+        $values[':passwordHash'] = password_hash($password, PASSWORD_DEFAULT);
+    } else {
+        $query = 'UPDATE cardGameUsers SET email = :email, name = :name, dob = :dob WHERE email = :id';
+    }
 
     try
     {
@@ -30,8 +34,6 @@
         die();
     }
 
-    header($appPage);
-    
+    header('Location: ' . $appPage);
     exit;
-    exit();
 ?>
