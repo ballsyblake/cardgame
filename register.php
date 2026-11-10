@@ -33,19 +33,25 @@
         die();
     }
 
-    $confirmationPage = "http://localhost/CardGame/confirmationEmail.php?email=".$username."&passwordHash=".$hash."";
+    /* Without email set up, confirm the account straight away. */
+    if (!email_enabled()) {
+        $confirm = $pdo->prepare("UPDATE cardGameUsers SET confirmed = '1' WHERE email = :email");
+        $confirm->execute([':email' => $username]);
+        echo "Account created. You can log in now.";
+        exit;
+    }
+
+    $confirmationPage = APP_URL . "/confirmationEmail.php?email=" . urlencode($username) . "&passwordHash=" . urlencode($hash);
 
     $mailSubject = "Account Confirmation";
-    $mailBody = "<h1>Thank you for registering with FutsalMe</h1> <h3>Please click the link below to confirm your account.<h3><br><a href='". $confirmationPage ."'>Confirm Account</a>";
+    $mailBody = "<h1>Thank you for registering with FutsalMe</h1> <h3>Please click the link below to confirm your account.<h3><br><a href='". htmlspecialchars($confirmationPage, ENT_QUOTES) ."'>Confirm Account</a>";
     $mailAltBody = "Thank you for registering with FutsalMe. 
     Please go to this web address to confirm your account: ".$confirmationPage;
     $receiverArray[$username] = "Customer";
     if(NewMail($mailSubject, $mailBody, $mailAltBody, $receiverArray)){
-        //$data["message"] = "Team submission successful. You will receive email from us shortly confirming your team\'s details. Please reply to the email if there are any discrepancies.";
         echo "Please check your emails for the account activation link.";
     }
     else{
-        //$data["message"] = "Something went wrong, please try again.";
-        return false;
+        echo "Account created, but the confirmation email could not be sent.";
     }
 ?>

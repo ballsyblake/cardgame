@@ -27,11 +27,11 @@
         foreach ($cardResult as $key => $value) {
           if($value["userType"] == "player"){
             $rank = ($value["speed"] + $value["stamina"] + $value["strength"] + $value["passing"] + $value["shooting"] + $value["dribbling"])/6;
-            $userSearch = $conn->prepare("SELECT profilePic, lastName FROM players WHERE ffa = '".$value["userID"]."'");
+            $userSearch = $conn->prepare("SELECT profilePic, lastName FROM players WHERE ffa = :userID");
           }
           else if($value["userType"] == "referee"){
             $rank = ($value["speed"] + $value["stamina"] + $value["communication"] + $value["decisionMaking"] + $value["positioning"] + $value["whistle"])/6;
-            $userSearch = $conn->prepare("SELECT profilePic, lastName FROM referees WHERE username = '".$value["userID"]."'");
+            $userSearch = $conn->prepare("SELECT profilePic, lastName FROM referees WHERE username = :userID");
           }
           $cardResult[$key]["rank"] = round($rank);
           if($rank <= 50)
@@ -40,7 +40,7 @@
             $cardResult[$key]["star"] = "silver";
           else if($rank >= 75)
             $cardResult[$key]["star"] = "gold";
-          $userSearch->execute();
+          $userSearch->execute([':userID' => $value["userID"]]);
           $userResult = $userSearch->fetchAll();
           foreach ($userResult as $userKey => $userValue) {
             $cardResult[$key]["profilePic"] = $userValue["profilePic"];

@@ -7,7 +7,8 @@
     $email = $_GET["email"];
     $hash = $_GET["passwordHash"];
     
-    $appPage = "http://localhost/CardGame/mainMenu.html?email=".$email;
+    require_once('config.php');
+    $appPage = APP_URL . "/mainMenu.html?email=" . urlencode($email);
     echo "I got my email: ".$email." and my hash: ".$hash;
 
     /* Insert query template. */
